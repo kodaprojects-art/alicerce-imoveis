@@ -35,9 +35,9 @@ const faq = section('faq');
 const ticker = section('ticker');
 const footer = section('footer');
 
-// Sub-pages are not built: links resolve to on-page anchors; unknown targets ([TODO]) render as plain text.
+// Sub-pages are not built: links resolve to on-page anchors; unknown targets render as plain text.
 const map = links as Record<string, string>;
-const href = (key: string): string | undefined => (key.includes('[TODO]') ? undefined : map[key] ?? undefined);
+const href = (key: string): string | undefined => map[key] ?? undefined;
 
 const workImages = [work1, work2, work3];
 const stepImages = [step1, step2, step3, step4];
@@ -103,7 +103,7 @@ const tickerItems = [...ticker.items, ...ticker.items];
   <section id="sobre" class="about" aria-label="Sobre">
     <div class="about__intro">
       <p class="about__est">{stats.items[0].label} {stats.items[0].value}</p>
-      <p class="about__lead">[TODO]</p>
+      <p class="about__lead">{stats.lead}</p>
     </div>
     <ul class="stats">
       {stats.items.map((item: { value: string; label: string }, i: number) => (
@@ -144,7 +144,7 @@ const tickerItems = [...ticker.items, ...ticker.items];
         <p>{scale.text}</p>
         {href(scale.link.href)
           ? <a class="pill pill--light" href={href(scale.link.href)}>{scale.link.label}<Arrow /></a>
-          : <span class="pill pill--light">{scale.link.label} [TODO]</span>}
+          : <span class="pill pill--light">{scale.link.label}</span>}
       </div>
     </div>
 
@@ -156,7 +156,7 @@ const tickerItems = [...ticker.items, ...ticker.items];
           {partners.links.map((l: { label: string; href: string }) =>
             href(l.href)
               ? <a class="pill pill--outline" href={href(l.href)}>{l.label}<Arrow /></a>
-              : <span class="pill pill--outline">{l.label} [TODO]</span>
+              : <span class="pill pill--outline">{l.label}</span>
           )}
         </div>
       </div>
@@ -201,10 +201,10 @@ const tickerItems = [...ticker.items, ...ticker.items];
     <h2 id="studio-title" class="studio__title">{middle.heading}</h2>
     <Img class="studio__img" src={middleImg} alt={middle.image.alt} sizes="100vw" />
     <ul class="studio__rows">
-      {middle.links.map((l: { label: string; href: string }) => (
+      {middle.links.map((l: { label: string; href: string; text: string }) => (
         <li class="studio__row">
           <a class="studio__label" href={href(l.href)}>{l.label}</a>
-          <p>[TODO]</p>
+          <p>{l.text}</p>
         </li>
       ))}
     </ul>
@@ -212,13 +212,13 @@ const tickerItems = [...ticker.items, ...ticker.items];
 
   <section id="faq" class="faq" aria-labelledby="faq-title">
     <hr class="rule" />
-    <p class="eyebrow">[TODO]</p>
+    <p class="eyebrow">{faq.eyebrow}</p>
     <div class="faq__grid">
       <h2 id="faq-title" class="display">{faq.heading}</h2>
       <div class="faq__list">
         <Accordion items={faqItems} />
         <div class="faq__foot">
-          <p>[TODO]</p>
+          <p>{faq.footText}</p>
           <a class="faq__ask" href={href(faq.cta.href)}>{faq.cta.label}<Arrow /></a>
         </div>
       </div>
@@ -239,8 +239,8 @@ const tickerItems = [...ticker.items, ...ticker.items];
       <Img src={step3} alt="" sizes="33vw" />
     </div>
     <div class="mid__content">
-      <p class="mid__small">[TODO]</p>
-      <p class="mid__big">[TODO]</p>
+      <p class="mid__small">{heroS.midSmall}</p>
+      <p class="mid__big">{heroS.midBig}</p>
       <a class="mid__cta" href={href(heroS.cta.href)}>{heroS.cta.label}<span class="round round--gold"><Arrow /></span></a>
     </div>
   </section>
@@ -261,7 +261,7 @@ const tickerItems = [...ticker.items, ...ticker.items];
         </ul>
       </nav>
       <ul class="ftr__social">
-        {footer.socials.map((s: string) => <li>{s}</li>)}
+        {footer.socials.map((s: string) => <li><a href="#">{s}</a></li>)}
       </ul>
       <div class="ftr__contact">
         <p class="ftr__label">{header.cta.label}</p>
@@ -270,7 +270,7 @@ const tickerItems = [...ticker.items, ...ticker.items];
       </div>
       <div class="ftr__legal">
         <p>© {new Date().getFullYear()} {content.businessName}</p>
-        {footer.legal.map((l: string) => <span>{l} [TODO]</span>)}
+        {footer.legal.map((l: string) => <a href="#">{l}</a>)}
       </div>
     </div>
   </footer>

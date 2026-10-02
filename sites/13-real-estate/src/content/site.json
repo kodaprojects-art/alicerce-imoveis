@@ -9,108 +9,269 @@
     {
       "id": "header",
       "logoText": "Alicerce Imóveis",
-      "serviceArea": "Atendendo [TODO] e região",
-      "phone": "[TODO]",
-      "cta": { "label": "Solicitar avaliação", "href": "/contato" },
-      "menu": ["Imóveis", "Vender", "Para corretores parceiros", "Sobre", "Blog", "Contato"]
+      "serviceArea": "Atendendo Curitiba e região",
+      "phone": "(41) 4000-0000",
+      "cta": {
+        "label": "Solicitar avaliação",
+        "href": "/contato"
+      },
+      "menu": [
+        "Imóveis",
+        "Vender",
+        "Para corretores parceiros",
+        "Sobre",
+        "Blog",
+        "Contato"
+      ]
     },
     {
       "id": "hero",
       "heading": "Imóveis escolhidos a dedo para cada momento de vida",
       "text": "Selecionamos casas, apartamentos e salas comerciais sob medida para o seu perfil, com cuidado em cada etapa da negociação.",
-      "cta": { "label": "Começar minha busca", "href": "/contato" },
-      "image": { "alt": "Fachada de casa moderna ao entardecer", "unsplashQuery": "modern house exterior dusk" }
+      "cta": {
+        "label": "Começar minha busca",
+        "href": "/contato"
+      },
+      "image": {
+        "alt": "Fachada de casa moderna ao entardecer",
+        "unsplashQuery": "modern house exterior dusk"
+      },
+      "midSmall": "Pronto para começar?",
+      "midBig": "Vamos encontrar o seu imóvel"
     },
     {
       "id": "stats",
       "items": [
-        { "value": "[TODO]", "label": "Ano de fundação" },
-        { "value": "[TODO]", "label": "Anos no mercado" },
-        { "value": "[TODO]", "label": "Imóveis no portfólio" },
-        { "value": "[TODO]", "label": "Semanas em média até a venda" }
-      ]
+        {
+          "value": "2010",
+          "label": "Ano de fundação"
+        },
+        {
+          "value": "16",
+          "label": "Anos no mercado"
+        },
+        {
+          "value": "350+",
+          "label": "Imóveis no portfólio"
+        },
+        {
+          "value": "10",
+          "label": "Semanas em média até a venda"
+        }
+      ],
+      "lead": "Uma imobiliária independente que seleciona cada imóvel com calma, critério e atenção aos detalhes."
     },
     {
       "id": "selected-work",
       "heading": "Imóveis em destaque",
       "items": [
-        { "title": "[TODO]", "location": "[TODO]", "image": { "alt": "Sala de estar ampla e iluminada", "unsplashQuery": "bright living room apartment" } },
-        { "title": "[TODO]", "location": "[TODO]", "image": { "alt": "Casa com jardim e piscina", "unsplashQuery": "house with garden pool" } },
-        { "title": "[TODO]", "location": "[TODO]", "image": { "alt": "Prédio residencial contemporâneo", "unsplashQuery": "contemporary apartment building" } }
+        {
+          "title": "Apartamento Rua das Araucárias",
+          "location": "Batel, Curitiba",
+          "image": {
+            "alt": "Sala de estar ampla e iluminada",
+            "unsplashQuery": "bright living room apartment"
+          }
+        },
+        {
+          "title": "Casa Jardim dos Ipês",
+          "location": "Santa Felicidade, Curitiba",
+          "image": {
+            "alt": "Casa com jardim e piscina",
+            "unsplashQuery": "house with garden pool"
+          }
+        },
+        {
+          "title": "Residencial Alto da Serra",
+          "location": "Ecoville, Curitiba",
+          "image": {
+            "alt": "Prédio residencial contemporâneo",
+            "unsplashQuery": "contemporary apartment building"
+          }
+        }
       ],
-      "link": { "label": "Todos os imóveis", "href": "/imoveis" }
+      "link": {
+        "label": "Todos os imóveis",
+        "href": "/imoveis"
+      }
     },
     {
       "id": "scale",
       "heading": "Atendimento cuidadoso em grande escala",
       "text": "De um apartamento compacto a empreendimentos inteiros, aplicamos a mesma atenção a cada negociação.",
-      "link": { "label": "Ver empreendimento em destaque", "href": "/imoveis/[TODO]" },
-      "image": { "alt": "Empreendimento imobiliário visto de cima", "unsplashQuery": "residential development aerial" }
+      "link": {
+        "label": "Ver empreendimento em destaque",
+        "href": "/imoveis"
+      },
+      "image": {
+        "alt": "Empreendimento imobiliário visto de cima",
+        "unsplashQuery": "residential development aerial"
+      }
     },
     {
       "id": "for-partners",
       "heading": "Para corretores e construtoras",
       "text": "Trabalhamos em parceria com profissionais e incorporadoras, com processos e documentação claros.",
       "links": [
-        { "label": "Para parceiros", "href": "/para-parceiros" },
-        { "label": "Baixar apresentação (PDF)", "href": "[TODO]" }
+        {
+          "label": "Para parceiros",
+          "href": "/para-parceiros"
+        },
+        {
+          "label": "Baixar apresentação (PDF)",
+          "href": "#"
+        }
       ],
-      "image": { "alt": "Corretores analisando planta de imóvel", "unsplashQuery": "real estate agents floor plan" }
+      "image": {
+        "alt": "Corretores analisando planta de imóvel",
+        "unsplashQuery": "real estate agents floor plan"
+      }
     },
     {
       "id": "testimonials",
       "heading": "O que nossos clientes dizem",
       "items": [
-        { "quote": "[TODO]", "author": "[TODO]" },
-        { "quote": "[TODO]", "author": "[TODO]" },
-        { "quote": "[TODO]", "author": "[TODO]" }
+        {
+          "quote": "Encontramos nosso apartamento em poucas semanas. O atendimento foi atencioso do início ao fim.",
+          "author": "Fernanda Rocha"
+        },
+        {
+          "quote": "Venderam minha casa pelo valor que eu esperava, com toda a documentação organizada.",
+          "author": "Paulo Henrique Lacerda"
+        },
+        {
+          "quote": "Visitamos só imóveis que faziam sentido para nós. Isso economizou muito tempo.",
+          "author": "Juliana Martins"
+        }
       ]
     },
     {
       "id": "process",
       "heading": "Como trabalhamos",
       "steps": [
-        { "number": "01", "title": "Conversa inicial", "text": "Entendemos o que você procura, seu orçamento e seu prazo." },
-        { "number": "02", "title": "Seleção e visitas", "text": "Apresentamos imóveis compatíveis e agendamos as visitas." },
-        { "number": "03", "title": "Negociação", "text": "Conduzimos a proposta e a documentação com transparência." },
-        { "number": "04", "title": "Entrega das chaves", "text": "Acompanhamos a assinatura e a entrega do imóvel." }
+        {
+          "number": "01",
+          "title": "Conversa inicial",
+          "text": "Entendemos o que você procura, seu orçamento e seu prazo."
+        },
+        {
+          "number": "02",
+          "title": "Seleção e visitas",
+          "text": "Apresentamos imóveis compatíveis e agendamos as visitas."
+        },
+        {
+          "number": "03",
+          "title": "Negociação",
+          "text": "Conduzimos a proposta e a documentação com transparência."
+        },
+        {
+          "number": "04",
+          "title": "Entrega das chaves",
+          "text": "Acompanhamos a assinatura e a entrega do imóvel."
+        }
       ]
     },
     {
       "id": "middle-hero",
-      "heading": "Curadoria de imóveis desde [TODO]",
+      "heading": "Curadoria de imóveis desde 2010",
       "links": [
-        { "label": "Imóveis", "href": "/imoveis" },
-        { "label": "Vender meu imóvel", "href": "/vender" }
+        {
+          "label": "Imóveis",
+          "href": "/imoveis",
+          "text": "Casas, apartamentos e salas comerciais selecionados para cada perfil."
+        },
+        {
+          "label": "Vender meu imóvel",
+          "href": "/vender",
+          "text": "Avaliação, divulgação e negociação do seu imóvel."
+        }
       ],
-      "image": { "alt": "Cozinha moderna integrada à sala", "unsplashQuery": "modern open kitchen interior" }
+      "image": {
+        "alt": "Cozinha moderna integrada à sala",
+        "unsplashQuery": "modern open kitchen interior"
+      }
     },
     {
       "id": "faq",
       "heading": "Perguntas frequentes",
       "items": [
-        { "q": "Quanto custa o serviço?", "a": "[TODO]" },
-        { "q": "Como funciona o processo?", "a": "Começamos com uma conversa, selecionamos imóveis, agendamos visitas e conduzimos a negociação." },
-        { "q": "Quanto tempo leva?", "a": "[TODO]" },
-        { "q": "Quais documentos são necessários?", "a": "[TODO]" },
-        { "q": "Vocês trabalham com outros corretores?", "a": "Sim. Atuamos em parceria com corretores e construtoras." },
-        { "q": "Atendem clientes de outras cidades?", "a": "[TODO]" },
-        { "q": "Qual é a área de atuação?", "a": "[TODO]" },
-        { "q": "Como começo?", "a": "Entre em contato pelo telefone ou pelo formulário." }
+        {
+          "q": "Quanto custa o serviço?",
+          "a": "Para quem compra, a busca é gratuita. Para quem vende, a comissão é de 6% sobre o valor de venda."
+        },
+        {
+          "q": "Como funciona o processo?",
+          "a": "Começamos com uma conversa, selecionamos imóveis, agendamos visitas e conduzimos a negociação."
+        },
+        {
+          "q": "Quanto tempo leva?",
+          "a": "Em média, de 4 a 12 semanas, conforme o perfil do imóvel e o momento do mercado."
+        },
+        {
+          "q": "Quais documentos são necessários?",
+          "a": "Documentos pessoais, matrícula atualizada do imóvel e certidões negativas. Orientamos cada etapa."
+        },
+        {
+          "q": "Vocês trabalham com outros corretores?",
+          "a": "Sim. Atuamos em parceria com corretores e construtoras."
+        },
+        {
+          "q": "Atendem clientes de outras cidades?",
+          "a": "Sim. Fazemos visitas por vídeo e organizamos a agenda presencial em poucos dias."
+        },
+        {
+          "q": "Qual é a área de atuação?",
+          "a": "Atuamos em Curitiba e região metropolitana, como São José dos Pinhais e Pinhais."
+        },
+        {
+          "q": "Como começo?",
+          "a": "Entre em contato pelo telefone ou pelo formulário."
+        }
       ],
-      "cta": { "label": "Fazer uma pergunta", "href": "/contato" }
+      "cta": {
+        "label": "Fazer uma pergunta",
+        "href": "/contato"
+      },
+      "eyebrow": "Dúvidas",
+      "footText": "Não encontrou sua dúvida?"
     },
     {
       "id": "ticker",
-      "items": ["Casas", "Apartamentos", "Salas comerciais", "Terrenos", "Locação", "Venda"]
+      "items": [
+        "Casas",
+        "Apartamentos",
+        "Salas comerciais",
+        "Terrenos",
+        "Locação",
+        "Venda"
+      ]
     },
     {
       "id": "footer",
       "slogan": "Imóveis escolhidos a dedo.",
-      "areaPages": ["[TODO]", "[TODO]", "[TODO]", "[TODO]"],
-      "links": ["Imóveis", "Vender", "Para parceiros", "Sobre", "Blog", "Contato"],
-      "socials": ["Instagram", "Facebook", "[TODO]"],
-      "legal": ["Privacidade", "Termos"]
+      "areaPages": [
+        "Curitiba",
+        "São José dos Pinhais",
+        "Pinhais",
+        "Colombo"
+      ],
+      "links": [
+        "Imóveis",
+        "Vender",
+        "Para parceiros",
+        "Sobre",
+        "Blog",
+        "Contato"
+      ],
+      "socials": [
+        "Instagram",
+        "Facebook",
+        "LinkedIn"
+      ],
+      "legal": [
+        "Privacidade",
+        "Termos"
+      ]
     }
   ]
 }
