@@ -1,0 +1,312 @@
+---
+import '../styles/tokens.css';
+import '../styles/site.css';
+import BaseLayout from '../../../../shared/components/BaseLayout.astro';
+import Accordion from '../../../../shared/components/Accordion.astro';
+import Img from '../../../../shared/components/Img.astro';
+import Arrow from '../components/Arrow.astro';
+import content from '../content/site.json';
+import links from '../content/links.json';
+import hero from '../assets/hero.jpg';
+import work1 from '../assets/work-1.jpg';
+import work2 from '../assets/work-2.jpg';
+import work3 from '../assets/work-3.jpg';
+import scaleImg from '../assets/scale.jpg';
+import partnersImg from '../assets/partners.jpg';
+import middleImg from '../assets/middle.jpg';
+import step1 from '../assets/step-1.jpg';
+import step2 from '../assets/step-2.jpg';
+import step3 from '../assets/step-3.jpg';
+import step4 from '../assets/step-4.jpg';
+import footerImg from '../assets/footer.jpg';
+
+// Each section is looked up by its id in the content file.
+const section = (id: string): any => content.sections.find((s) => s.id === id);
+const header = section('header');
+const heroS = section('hero');
+const stats = section('stats');
+const work = section('selected-work');
+const scale = section('scale');
+const partners = section('for-partners');
+const testimonials = section('testimonials');
+const processS = section('process');
+const middle = section('middle-hero');
+const faq = section('faq');
+const ticker = section('ticker');
+const footer = section('footer');
+
+// Sub-pages are not built: links resolve to on-page anchors; unknown targets ([TODO]) render as plain text.
+const map = links as Record<string, string>;
+const href = (key: string): string | undefined => (key.includes('[TODO]') ? undefined : map[key] ?? undefined);
+
+const workImages = [work1, work2, work3];
+const stepImages = [step1, step2, step3, step4];
+const thumbs = [[work1, work2, work3], [step1, step2, step3], [scaleImg, middleImg, partnersImg], [step4, work2, hero]];
+const faqItems = faq.items.map((i: { q: string; a: string }) => ({ question: i.q, answer: i.a }));
+const tickerItems = [...ticker.items, ...ticker.items];
+---
+
+<BaseLayout title={content.seo.title} description={content.seo.description}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Non-blocking web fonts (display=swap); fallback stack renders first. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" /></noscript>
+  </Fragment>
+
+  <header slot="header" class="hdr">
+    <div class="hdr__inner">
+      <a class="hdr__logo" href="/">{header.logoText}</a>
+      <p class="hdr__area">{header.serviceArea}</p>
+      <p class="hdr__phone"><span>{header.cta.label}</span><span>{header.phone}</span></p>
+      <a class="pill pill--dark hdr__cta" href={href(header.cta.href)}>{header.cta.label}<Arrow /></a>
+      <button class="hdr__toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="visually-hidden">Abrir menu</span>
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h18M3 15h18"></path></svg>
+      </button>
+    </div>
+    <div class="menu" id="menu" hidden>
+      <div class="menu__top">
+        <span class="hdr__logo">{header.logoText}</span>
+        <button class="menu__close" type="button">
+          <span class="visually-hidden">Fechar menu</span>
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+        </button>
+      </div>
+      <div class="menu__grid">
+        <div class="menu__media">
+          <Img src={middleImg} alt="" sizes="(min-width: 810px) 33vw, 100vw" />
+          <div class="menu__info">
+            <p>{content.businessName}<br />{header.serviceArea}</p>
+            <p>{header.cta.label}<br />{header.phone}</p>
+          </div>
+        </div>
+        <nav aria-label="Principal">
+          <ul class="menu__list">
+            {header.menu.map((label: string) => <li><a href={href(label)}>{label}</a></li>)}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <Img class="hero__img" src={hero} alt={heroS.image.alt} priority sizes="100vw" />
+    <div class="hero__content">
+      <h1 class="hero__title">{heroS.heading}</h1>
+      <p class="hero__text">{heroS.text}</p>
+      <a class="pill pill--glass" href={href(heroS.cta.href)}>{heroS.cta.label}<Arrow /></a>
+    </div>
+  </section>
+
+  <section id="sobre" class="about" aria-label="Sobre">
+    <div class="about__intro">
+      <p class="about__est">{stats.items[0].label} {stats.items[0].value}</p>
+      <p class="about__lead">[TODO]</p>
+    </div>
+    <ul class="stats">
+      {stats.items.map((item: { value: string; label: string }, i: number) => (
+        <li class:list={['stats__item', { 'stats__item--low': i % 2 === 1 }]}>
+          <p class="stats__value">{item.value}</p>
+          <p class="stats__label">{item.label}</p>
+          <div class="stats__thumbs" aria-hidden="true">
+            {thumbs[i].map((t) => <Img src={t} alt="" width={96} height={96} />)}
+          </div>
+        </li>
+      ))}
+    </ul>
+    <a class="pill pill--light about__cta" href={href(heroS.cta.href)}>{heroS.cta.label}<Arrow /></a>
+  </section>
+
+  <section id="casos" class="work" aria-labelledby="work-title">
+    <hr class="rule" />
+    <p class="eyebrow">{work.link.label}</p>
+    <div class="work__head">
+      <h2 id="work-title" class="display">{work.heading}</h2>
+      <a class="work__all" href={href(work.link.href)}>{work.link.label}<span class="round"><Arrow /></span></a>
+    </div>
+    <ul class="work__grid">
+      {work.items.map((item: any, i: number) => (
+        <li class:list={['card', { 'card--low': i === 1 }]}>
+          <Img class="card__img" src={workImages[i]} alt={item.image.alt} sizes="(min-width: 810px) 33vw, 100vw" />
+          <h3 class="card__title">{item.title}</h3>
+          <p class="card__meta">{item.location}</p>
+        </li>
+      ))}
+    </ul>
+
+    <hr class="rule rule--thin" />
+    <div class="split">
+      <Img class="split__img" src={scaleImg} alt={scale.image.alt} sizes="(min-width: 810px) 45vw, 100vw" />
+      <div class="split__text">
+        <h3 class="h3">{scale.heading}</h3>
+        <p>{scale.text}</p>
+        {href(scale.link.href)
+          ? <a class="pill pill--light" href={href(scale.link.href)}>{scale.link.label}<Arrow /></a>
+          : <span class="pill pill--light">{scale.link.label} [TODO]</span>}
+      </div>
+    </div>
+
+    <div id="parceiros" class="trade">
+      <div class="trade__text">
+        <h3 class="h3">{partners.heading}</h3>
+        <p>{partners.text}</p>
+        <div class="trade__links">
+          {partners.links.map((l: { label: string; href: string }) =>
+            href(l.href)
+              ? <a class="pill pill--outline" href={href(l.href)}>{l.label}<Arrow /></a>
+              : <span class="pill pill--outline">{l.label} [TODO]</span>
+          )}
+        </div>
+      </div>
+      <Img class="trade__img" src={partnersImg} alt={partners.image.alt} sizes="(min-width: 810px) 30vw, 100vw" />
+    </div>
+  </section>
+
+  <section class="quotes" aria-labelledby="quotes-title" data-slider>
+    <div class="quotes__side">
+      <p id="quotes-title" class="eyebrow">{testimonials.heading}</p>
+    </div>
+    <div class="quotes__track" aria-live="polite">
+      {testimonials.items.map((t: { quote: string; author: string }, i: number) => (
+        <figure class="quote" data-slide hidden={i > 0}>
+          <figcaption class="quote__author">{t.author}</figcaption>
+          <svg class="quote__mark" aria-hidden="true" width="32" height="24" viewBox="0 0 32 24"><path d="M0 24V13L7 0h6L8 12h6v12zm18 0V13l7-13h6l-5 12h6v12z" fill="currentColor"></path></svg>
+          <blockquote class="quote__text"><p>{t.quote}</p></blockquote>
+        </figure>
+      ))}
+      <div class="quotes__nav">
+        <button class="round round--grey" type="button" data-prev><span class="visually-hidden">Depoimento anterior</span><Arrow dir="left" /></button>
+        <button class="round round--grey" type="button" data-next><span class="visually-hidden">Próximo depoimento</span><Arrow /></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo" class="process" aria-labelledby="process-title">
+    <h2 id="process-title" class="display">{processS.heading}</h2>
+    <ol class="process__grid">
+      {processS.steps.map((s: { number: string; title: string; text: string }, i: number) => (
+        <li class="step">
+          <span class="step__num">{s.number}.</span>
+          <Img class="step__img" src={stepImages[i]} alt="" sizes="(min-width: 810px) 25vw, 100vw" />
+          <h3 class="step__title">{s.title}</h3>
+          <p class="step__text">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="studio" aria-labelledby="studio-title">
+    <h2 id="studio-title" class="studio__title">{middle.heading}</h2>
+    <Img class="studio__img" src={middleImg} alt={middle.image.alt} sizes="100vw" />
+    <ul class="studio__rows">
+      {middle.links.map((l: { label: string; href: string }) => (
+        <li class="studio__row">
+          <a class="studio__label" href={href(l.href)}>{l.label}</a>
+          <p>[TODO]</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="faq" class="faq" aria-labelledby="faq-title">
+    <hr class="rule" />
+    <p class="eyebrow">[TODO]</p>
+    <div class="faq__grid">
+      <h2 id="faq-title" class="display">{faq.heading}</h2>
+      <div class="faq__list">
+        <Accordion items={faqItems} />
+        <div class="faq__foot">
+          <p>[TODO]</p>
+          <a class="faq__ask" href={href(faq.cta.href)}>{faq.cta.label}<Arrow /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <ul class="ticker__track">
+      {tickerItems.map((t: string) => <li><span class="ticker__sep">✦</span>{t}</li>)}
+    </ul>
+  </div>
+  <p class="visually-hidden">{ticker.items.join(', ')}</p>
+
+  <section class="mid" aria-label={heroS.cta.label}>
+    <div class="mid__media" aria-hidden="true">
+      <Img src={work1} alt="" sizes="33vw" />
+      <Img src={step2} alt="" sizes="33vw" />
+      <Img src={step3} alt="" sizes="33vw" />
+    </div>
+    <div class="mid__content">
+      <p class="mid__small">[TODO]</p>
+      <p class="mid__big">[TODO]</p>
+      <a class="mid__cta" href={href(heroS.cta.href)}>{heroS.cta.label}<span class="round round--gold"><Arrow /></span></a>
+    </div>
+  </section>
+
+  <footer slot="footer" id="contato" class="ftr">
+    <Img class="ftr__bg" src={footerImg} alt="" sizes="100vw" />
+    <div class="ftr__inner">
+      <div class="ftr__brand">
+        <a class="hdr__logo" href="/">{header.logoText}</a>
+        <p class="ftr__slogan">{footer.slogan}</p>
+        <ul class="ftr__areas">
+          {footer.areaPages.map((a: string) => <li>{a}</li>)}
+        </ul>
+      </div>
+      <nav class="ftr__nav" aria-label="Rodapé">
+        <ul>
+          {footer.links.map((l: string) => <li><a href={href(l)}>{l}</a></li>)}
+        </ul>
+      </nav>
+      <ul class="ftr__social">
+        {footer.socials.map((s: string) => <li>{s}</li>)}
+      </ul>
+      <div class="ftr__contact">
+        <p class="ftr__label">{header.cta.label}</p>
+        <p class="ftr__phone">{header.phone}</p>
+        <p class="ftr__label">{header.serviceArea}</p>
+      </div>
+      <div class="ftr__legal">
+        <p>© {new Date().getFullYear()} {content.businessName}</p>
+        {footer.legal.map((l: string) => <span>{l} [TODO]</span>)}
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<script>
+  // Full-screen menu: open/close, Esc closes and returns focus.
+  const toggle = document.querySelector<HTMLButtonElement>('.hdr__toggle');
+  const menu = document.getElementById('menu');
+  const close = document.querySelector<HTMLButtonElement>('.menu__close');
+  if (toggle && menu && close) {
+    const setOpen = (open: boolean) => {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      (open ? close : toggle).focus();
+    };
+    toggle.addEventListener('click', () => setOpen(true));
+    close.addEventListener('click', () => setOpen(false));
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) setOpen(false);
+    });
+  }
+
+  // Testimonial slider: prev/next buttons cycle slides.
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((slider) => {
+    const slides = [...slider.querySelectorAll<HTMLElement>('[data-slide]')];
+    let index = 0;
+    const show = (next: number) => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((s, i) => (s.hidden = i !== index));
+    };
+    slider.querySelector('[data-prev]')?.addEventListener('click', () => show(index - 1));
+    slider.querySelector('[data-next]')?.addEventListener('click', () => show(index + 1));
+  });
+</script>

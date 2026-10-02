@@ -1,0 +1,62 @@
+/* Site tokens: reference R3 palette/type from shared/tokens, plus spacing measured on the reference at 1440px. */
+@import '../../../../shared/tokens/13-real-estate.css';
+
+:root {
+  --color-bg: var(--color-grey-light);
+  --color-surface: var(--color-white);
+  --color-text: var(--color-black);
+  --color-muted: var(--color-grey-dark);
+  --color-border: var(--color-silver);
+  --color-primary: var(--color-black);
+  --color-on-primary: var(--color-white);
+  --color-focus: var(--color-gold);
+  --color-dark: var(--color-charcoal);
+
+  --font-display: var(--font-heading);
+  --font-ui: var(--font-body);
+  --text-sm: var(--text-1);
+  --text-base: var(--text-2);
+  --leading-body: 1.5;
+  --leading-heading: 1.1;
+  --tracking-tight: -0.04em;
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 78px;
+  --space-section: 140px;
+  --space-section-top: 120px;
+  --space-gutter: 42px;
+  --container-max: 1920px;
+  --header-height: 130px;
+
+  --border-width: 1px;
+  --rule-width: 3px;
+  --radius-button: 999px;
+  --radius-card: var(--radius-sm);
+  --radius-input: var(--radius-sm);
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --icon-button: 32px;
+  --nav-button: 40px;
+
+  --duration-fast: 200ms;
+  --duration-slide: 400ms;
+  --duration-ticker: 40s;
+  --opacity-hover: 0.8;
+  --overlay: rgb(0 0 0 / 0.45);
+  --z-header: 10;
+  --z-menu: 30;
+  --z-skip: 40;
+}
+
+@media (max-width: 809px) {
+  :root {
+    --space-gutter: 20px;
+    --space-section: 80px;
+    --space-section-top: 72px;
+    --space-xl: 48px;
+    --header-height: 88px;
+  }
+}
